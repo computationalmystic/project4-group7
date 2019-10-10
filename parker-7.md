@@ -30,4 +30,4 @@
 	- connection to assignment file database
 	
 	
-# Design Document for this list found at https://github.com/kaitlynzahn/kmzgm8//lecture-labs/rw4
+# Design Document for this list found at https://github.com/kaitlynzahn/kmzgm8/blob/master/project-two-designFocus/4320Group15DesignFocus.pdf
