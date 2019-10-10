@@ -28,7 +28,7 @@
 - Figure out the relationship between each class and method
 - Create classes
 - Implement methods
-- Let team members review each one's implementation
+- Let team members review implementation
 - Let team members test the applications
 - Fix bugs
 
