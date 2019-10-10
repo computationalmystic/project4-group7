@@ -23,7 +23,7 @@
 		- Collect Assignments
 		- Grade Assignments
 ### Next Step
-- Distribute works to each person
+- Distribute work to each person
 - Set up the environment such as the database and web server
 - Figure out the relationship between each class and method
 - Create classes
