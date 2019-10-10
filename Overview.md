@@ -24,7 +24,7 @@
 		- Grade Assignments
 ### Next Step
 - Distribute work to each person
-- Set up the environment such as the database and web server
+- Set up needed environment such as the database and web server
 - Figure out the relationship between each class and method
 - Create classes
 - Implement methods
