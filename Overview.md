@@ -23,3 +23,13 @@
 		- Collect Assignments
 		- Grade Assignments
 ### Next Step
+- Distribute works to each person
+- Set up the environment such as the database and web server
+- Figure out the relationship between each class and method
+- Create classes
+- Implement methods
+- Let team members review each one's implementation
+- Let team members test the applications
+- Fix bugs
+
+
