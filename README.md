@@ -1,6 +1,7 @@
 # project4-group7
-Team members: Weiyu Feng, Rebecca Parker, Mahmoud Thabit<br>
-**Overview Document:**
+Team members: Weiyu Feng, Rebecca Parker, Mahmoud Thabit
+
+Overview Document:
 [https://github.com/computationalmystic/project4-group7/blob/production/Overview.md](https://github.com/computationalmystic/project4-group7/blob/production/Overview.md)
 
 Weiyu Feng todo list:
