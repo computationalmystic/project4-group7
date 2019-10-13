@@ -1,3 +1,5 @@
+[design document](https://github.com/mahmoudthabit/mlt446/tree/master/Assignment%204)
+
 # Classes needed:
 TA, Teacher, Admin, Student, and Assignment  
 
