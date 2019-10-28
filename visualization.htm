@@ -217,7 +217,7 @@ function getRepoGroupForkCount(txt){
     
     for (i = 0; i < obj.length; i++){
         if (i <  obj.length) {
-	    datapoints.push({label: obj[i].repo_name, y: obj[i].fork-count});
+	    datapoints.push({label: obj[i].repo_name, y: obj[i].forks});
         }
     }
     return datapoints;
