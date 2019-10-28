@@ -3,51 +3,51 @@
 <body>
 
 <p>1. Get Repo Group Top 6 Committers<br></p>
-<button type="button" onclick="loadRepoGroupTopCommitters(25152)">MHS</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(20)">Rails</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(21)">Comcast</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(22)">GraphQL</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(23)">Netflix</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(24)">Apache</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(25151)">Zephyr-RTOS</button>
-<button type="button" onclick="loadRepoGroupTopCommitters(25150)">CHAOSS Risk Working Group</button>
+<button type="button" onclick="topCommittersChart(25152)">MHS</button>
+<button type="button" onclick="topCommittersChart(20)">Rails</button>
+<button type="button" onclick="topCommittersChart(21)">Comcast</button>
+<button type="button" onclick="topCommittersChart(22)">GraphQL</button>
+<button type="button" onclick="topCommittersChart(23)">Netflix</button>
+<button type="button" onclick="topCommittersChart(24)">Apache</button>
+<button type="button" onclick="topCommittersChart(25151)">Zephyr-RTOS</button>
+<button type="button" onclick="topCommittersChart(25150)">CHAOSS Risk Working Group</button>
     
     
 <p>2. Get Pull Request Acceptance Rate<br></p>
-<!--<button type="button" onclick="loadRepoGroupPull(25152)">MHS</button>-->
-<button type="button" onclick="loadRepoGroupPull(20)">Rails</button>
-<button type="button" onclick="loadRepoGroupPull(21)">Comcast</button>
-<button type="button" onclick="loadRepoGroupPull(22)">GraphQL</button>
-<!--<button type="button" onclick="loadRepoGroupPull(23)">Netflix</button>-->
-<button type="button" onclick="loadRepoGroupPull(24)">Apache</button>
-<button type="button" onclick="loadRepoGroupPull(25151)">Zephyr-RTOS</button>
-<button type="button" onclick="loadRepoGroupPull(25150)">CHAOSS Risk Working Group</button>
+<!--<button type="button" onclick="pullChart(25152)">MHS</button>-->
+<button type="button" onclick="pullChart(20)">Rails</button>
+<button type="button" onclick="pullChart(21)">Comcast</button>
+<button type="button" onclick="pullChart(22)">GraphQL</button>
+<!--<button type="button" onclick="pullChart(23)">Netflix</button>-->
+<button type="button" onclick="pullChart(24)">Apache</button>
+<button type="button" onclick="pullChart(25151)">Zephyr-RTOS</button>
+<button type="button" onclick="pullChart(25150)">CHAOSS Risk Working Group</button>
     
 
 <p>3. Select Fork Count<br></p>
-<!--<button type="button" onclick="emptyList(); loadRepoGroupForkCount(25152);">MHS</button>-->
-<button type="button" onclick="emptyList(); loadRepoGroupForkCount(20);">Rails</button>
-<button type="button" onclick="emptyList(); loadRepoGroupForkCount(21);">Comcast</button>
-<button type="button" onclick="emptyList(); loadRepoGroupForkCount(22);">GraphQL</button>
-<!--<button type="button" onclick="emptyList(); loadRepoGroupForkCount(23);">Netflix</button>-->
-<button type="button" onclick="emptyList(); loadRepoGroupForkCount(24);">Apache</button>
-<button type="button" onclick="emptyList(); loadRepoGroupForkCount(25151);">Zephyr-RTOS</button>
-<button type="button" onclick="emptyList(); loadRepoGroupForkCount(25150);">CHAOSS Risk Working Group</button>
+<!--<button type="button" onclick="emptyList(); forkChart(25152);">MHS</button>-->
+<button type="button" onclick="emptyList(); forkChart(20);">Rails</button>
+<button type="button" onclick="emptyList(); forkChart(21);">Comcast</button>
+<button type="button" onclick="emptyList(); forkChart(22);">GraphQL</button>
+<!--<button type="button" onclick="emptyList(); forkChart(23);">Netflix</button>-->
+<button type="button" onclick="emptyList(); forkChart(24);">Apache</button>
+<button type="button" onclick="emptyList(); forkChart(25151);">Zephyr-RTOS</button>
+<button type="button" onclick="emptyList(); forkChart(25150);">CHAOSS Risk Working Group</button>
 <br>
 <select id="mySelect" size="10">
 </select>
 <button type="button" onclick="displayForks()">Select</button>
-    
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
     
     
 <p id="demo"></p>
 
 
 <script>
-
 var repo_group_id;
 var repo_id;
-
 function loadRepoId(num) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -72,7 +72,6 @@ function getRepoId (txt) {
     document.getElementById("demo").innerHTML = out ;
 }
     
-
 function loadRepoGroupId() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -154,7 +153,6 @@ function getRepoGroupPull (txt) {
 } 
     
 var forkObj;
-
 function loadRepoGroupForkCount(num) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -195,10 +193,84 @@ function emptyList() {
         x.remove(x.length-1);
     }
 }   
-
 function displayForks(){
     var x = document.getElementById("mySelect");
     document.getElementById("demo").innerHTML = forkObj[x.selectedIndex].forks;
+}
+
+function topCommittersChart(num) {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light1", 
+	animationEnabled: true, 		
+	title:{
+		text: "Pull Request Acceptance Rate"
+	},
+	data: [
+	{
+		// Change type to "bar", "area", "spline", "column",etc.
+		type: "pie",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
+}
+
+function pullChart(num) {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light1", 
+	animationEnabled: true, 		
+	title:{
+		text: "Pull Requests"
+	},
+	data: [
+	{
+		// Change type to "bar", "area", "spline", "column",etc.
+		type: "bar",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
+}
+
+function forkChart(num) {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light1", 
+	animationEnabled: true, 		
+	title:{
+		text: "Fork Count"
+	},
+	data: [
+	{
+		// Change type to "bar", "area", "spline", "column",etc.
+		type: "column",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
 }
     
 </script>
