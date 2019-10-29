@@ -17,7 +17,7 @@ Mahmoud Thabit todo list:
 
 ## Website
 ### Note
-**Note: I recommend you run our website in Chrome, and click the "load unsecured javascript" in the address bar to see our visualization of data**
+**Note: I recommend you run our website in Chrome, and click the "load unsecured javascript" in the address bar to see our visualization of data. If you open it in Safari, it may now work unless you go to the browser settings and modify some of them**
 ### Website URL
 https://computationalmystic.github.io/project4-group7/
 ### Description
