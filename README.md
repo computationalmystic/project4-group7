@@ -17,7 +17,9 @@ Mahmoud Thabit todo list:
 
 ## Website
 ### Note
-**Note: I recommend you run our code in Chrome, and click the "load unsecure javascript" in the address bar to see our visualization of data**
+**Note: I recommend you run our website in Chrome, and click the "load unsecured javascript" in the address bar to see our visualization of data**
+### Website URL
+https://computationalmystic.github.io/project4-group7/
 ### Description
 The first visualization is the top committers per group id, each button will get the top committers using ajax request then will display only the top 6 committers for that group. example of link http://augur.osshealth.io:5000/api/unstable/repo-groups/23/top-committers to get the top committers to Netflix group.
 Note: the buttons are per mapped to each group, and we commented out the groups that return nothing.
