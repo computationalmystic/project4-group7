@@ -30,7 +30,8 @@ emptyList(): will clear select form all the elements in it..
 displayForks(): this function will get the index of the element of select that was selected and load the number of forks in to a datapoint var, then the data will be displayed for the number of forks that a repository has with the name of the repository.
 
 
-We divided the work mainly on what was each of us good at and the passion they wanted to procure, with compromises to get the project done (example: we could not all do front end visualizations):
+We divided the work mainly on what was each of us good at and the passion they wanted to procure, with compromises to get the project done (example: we could not all do front end visualizations) each member of our group finished web development course, so we all knew to we get data using AJAX and how to use CSS, and JS:.
+
 Rebecca Parker: Front end focused (CSS and JS visualizations).
 Mahmoud Thabit: Backend focused (AJAX request and JS).
 Weiyu Feng: Backend and server focused (server deployment, AJAX and JS).
