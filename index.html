@@ -25,22 +25,30 @@
     
 
 <p>3. Select Fork Count<br></p>
-<!--<button type="button" onclick="getRepoGroupForkCount(25152);">MHS</button>-->
-<button type="button" onclick="getRepoGroupForkCount(20);">Rails</button>
-<button type="button" onclick="getRepoGroupForkCount(21);">Comcast</button>
-<button type="button" onclick="getRepoGroupForkCount(22);">GraphQL</button>
-<!--<button type="button" onclick="getRepoGroupForkCount(23);">Netflix</button>-->
-<button type="button" onclick="getRepoGroupForkCount(24);">Apache</button>
-<button type="button" onclick="getRepoGroupForkCount(25151);">Zephyr-RTOS</button>
-<button type="button" onclick="getRepoGroupForkCount(25150);">CHAOSS Risk Working Group</button>
+<!--<button type="button" onclick="emptyList(); loadRepoGroupForkCount(25152);">MHS</button>-->
+<button type="button" onclick="emptyList(); loadRepoGroupForkCount(20);">Rails</button>
+<button type="button" onclick="emptyList(); loadRepoGroupForkCount(21);">Comcast</button>
+<button type="button" onclick="emptyList(); loadRepoGroupForkCount(22);">GraphQL</button>
+<!--<button type="button" onclick="emptyList(); loadRepoGroupForkCount(23);">Netflix</button>-->
+<button type="button" onclick="emptyList(); loadRepoGroupForkCount(24);">Apache</button>
+<button type="button" onclick="emptyList(); loadRepoGroupForkCount(25151);">Zephyr-RTOS</button>
+<button type="button" onclick="emptyList(); loadRepoGroupForkCount(25150);">CHAOSS Risk Working Group</button>
 <br>
+<select id="mySelect" size="10">
+</select>
+<button type="button" onclick="displayForks()">Select</button>
+<br>
+   
+        
+<p id="demo"></p>
+<p id="demo1"></p>
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
     
     
 <p id="demo"></p>
-
+<p id="demo1"></p>
 
 <script>
 var repo_group_id;
@@ -184,27 +192,14 @@ function getRepoGroupPull (txt) {
     return datapoints;
 } 
     
+var forkObj;
+
 function loadRepoGroupForkCount(num) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            datapoints = getRepoGroupForkCount(this.responseText);
-	    var chart = new CanvasJS.Chart("chartContainer", {
-		theme: "light1", 
-		animationEnabled: true, 		
-		title:{
-			text: "Fork Count"
-		},
-		data: [
-		{
-			// Change type to "bar", "area", "spline", "column",etc.
-			type: "column",
-			dataPoints: datapoints
-		}
-		]
-	});
-	chart.render();
-	}
+            getRepoGroupForkCount (this.responseText);
+        } 
     };
     xhttp.open("GET", "http://augur.osshealth.io:5000/api/unstable/repo-groups/" + num + "/fork-count", true);
     xhttp.send();
@@ -213,16 +208,72 @@ function loadRepoGroupForkCount(num) {
 function getRepoGroupForkCount(txt){
     
     var obj = JSON.parse(txt);
-    datapoints = [];
+    forkObj = obj;
+    var out = '';
     
     for (i = 0; i < obj.length; i++){
         if (i <  obj.length) {
-	    datapoints.push({label: obj[i].repo_name, y: obj[i].forks});
+//            out += obj[i].repo_id + "         " + obj[i].repo_name + "<br>";
+            addSelect(obj[i].repo_name);
         }
     }
-    return datapoints;
+        
+//    document.getElementById("demo").innerHTML = obj.length;
 }
+    
+function addSelect(txt) {
+    var x = document.getElementById("mySelect");
+    var option = document.createElement("option");
+    option.text = txt;
+    x.add(option);
+}
+    
+function emptyList() {
+    var x = document.getElementById("mySelect");
+    while(x.length != 0){
+        x.remove(x.length-1);
+    }
+}   
 
+function displayForks(){
+    var x = document.getElementById("mySelect");
+//    document.getElementById("demo1").innerHTML = forkObj[x.selectedIndex].forks;
+    
+//    datapoints = getRepoGroupTopCommitters (forkObj[x.selectedIndex].forks);
+    
+//	    datapoints.push({label: obj[i].date, y: obj[i].rate});
+    var datapoints = [];
+    datapoints.push({label: forkObj[x.selectedIndex].repo_name, y: forkObj[x.selectedIndex].forks});
+      var chart = new CanvasJS.Chart("chartContainer", { 
+          theme: "light1", 
+          animationEnabled: true, 		
+          title:{ 
+              text: "Pull Request Acceptance Rate" 
+          }, 
+          data: [ 
+              { 
+                  // Change type to "bar", "area", "spline", "column",etc. 
+                  type: "bar", 
+                  dataPoints: datapoints 
+              } 
+          ] 
+      }); 
+    chart.render();
+        
+}
+//    
+//function getRepoGroupForkCount(txt){
+//    
+//    var obj = JSON.parse(txt);
+//    datapoints = [];
+//    
+//    for (i = 0; i < obj.length; i++){
+//        if (i <  obj.length) {
+//	    datapoints.push({label: obj[i].repo_name, y: obj[i].forks});
+//        }
+//    }
+//    return datapoints;
+//}
     
 </script>
 
