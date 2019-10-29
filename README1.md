@@ -11,16 +11,22 @@ The third visualization we did was the number of forks per group per repository.
 
 Functions: 
 
-loadRepoGroupTopCommitters(num): get number that is correlates to the group id, the function will send an ajax request to get data from server and will call functions and create the visualization for the Top 6 committers.
+1. loadRepoGroupTopCommitters(num): get number that is correlates to the group id, the function will send an ajax request to get data from server and will call functions and create the visualization for the Top 6 committers.
+
 getRepoGroupTopCommitters(txt): will get the raw data then parse it to a json object then organize the data so that the visualization will work.
 
-loadRepoGroupPull(num): get number that is correlates to the group id, the function will send an ajax request to get data from server will user getRepoGroupPull(txt) to organize the date and then display the visualization of the pull request acceptance rate. 
+2. loadRepoGroupPull(num): get number that is correlates to the group id, the function will send an ajax request to get data from server will user getRepoGroupPull(txt) to organize the date and then display the visualization of the pull request acceptance rate. 
+
 getRepoGroupPull (txt): will get raw data received from the server and parse it and load it to a datapoint var then return that var.
 
-loadRepoGroupForkCount(num): get number that is correlates to the group id, the function will send an ajax request to get data from server. Then loads the names of each repository so the user can select which repository needs the data to be displayed.
+3. loadRepoGroupForkCount(num): get number that is correlates to the group id, the function will send an ajax request to get data from server. Then loads the names of each repository so the user can select which repository needs the data to be displayed.
+
 getRepoGroupForkCount(txt): will get raw data received from the server and parse it and load into select form using addSelect(txt) function so the user can see all the repo names.
+
 addSelect(txt): will get text and add that text as an element to the select form so the user car chose. 
+
 emptyList(): will clear select form all the elements in it..
+
 displayForks(): this function will get the index of the element of select that was selected and load the number of forks in to a datapoint var, then the data will be displayed for the number of forks that a repository has with the name of the repository.
 
 
